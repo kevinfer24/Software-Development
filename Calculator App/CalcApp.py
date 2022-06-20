@@ -65,6 +65,7 @@ def setOp(op):
         equals()
         currentOp = op
     copied = True
+ # Computes the calculation
 def equals(first = False):
     global accumulator
     global copied
@@ -82,7 +83,7 @@ def equals(first = False):
     accumulator = result
     C.itemconfig(output, text=str(float(result)))
     
-
+# Deletes most recently entered digit
 def backSpace():
     currentText = C.itemcget(output, 'text')
     if currentText != "0":
@@ -91,12 +92,12 @@ def backSpace():
             if C.itemcget(output, 'text') == "": C.itemconfig(output, text="0")
         except:
             C.itemconfig(output, text="0")
-
+# Clears the calculator and the accumulator
 def clearNum():
     global accumulator
     accumulator = 0
     C.itemconfig(output, text="0")
-
+# Copies to clipboard
 def copyNum():
     pyperclip.copy(C.itemcget(output, 'text'))
 
@@ -162,6 +163,7 @@ C = Canvas(root, width= 350, height=100, background="white")
 output = C.create_text(350,65, anchor="e", text="0", fill="black", font=["Courier", 45])
 C.place(x=0,y=0)
 
+# Call the functions to draw the buttons and operators
 createNumButtons()
 createFunctionButtons()
 
